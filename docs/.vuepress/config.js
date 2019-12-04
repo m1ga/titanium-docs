@@ -1,3 +1,5 @@
+const path = require('path');
+
 module.exports = {
   base: '/titanium-docs/',
   title: 'Titanium Mobile',
@@ -105,7 +107,10 @@ module.exports = {
     'versioning',
     'apidocs',
     '@vuepress/back-to-top'
-  ]
+  ],
+  chainWebpack(config) {
+    config.resolve.alias.set('@components', path.resolve(__dirname, 'local-components'));
+  }
 }
 
 function getSidebar() {
